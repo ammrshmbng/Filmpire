@@ -9,6 +9,7 @@ function NavBar() {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
+  const isAuthenticated = true;
   return (
     <AppBar position="fixed">
       <Toolbar className={classes.toolbar}>
@@ -30,6 +31,32 @@ function NavBar() {
         >
           {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
         </IconButton>
+        {!isMobile && 'Search...'}
+        <div>
+          {!isAuthenticated ? (
+            <Button color="inherit" onClick={() => {}}>
+              Login &nbsp; <AccountCircle />
+            </Button>
+          ) : (
+
+            <Button
+              color="inherit"
+              component={Link}
+              to="/profile/:id"
+              className={classes.linkButton}
+              onClick={() => {}}
+            >
+              {!isMobile && <>My Movies &nbsp;</>}
+              <Avatar
+                style={{ width: 30, height: 30 }}
+                alt="Profile"
+                src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+              />
+            </Button>
+
+          )}
+        </div>
+        {isMobile && 'Search...'}
       </Toolbar>
     </AppBar>
   );
