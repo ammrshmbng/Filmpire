@@ -1,13 +1,14 @@
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 import useStyles from './styles';
 
 function NavBar() {
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
-
+  const theme = useTheme();
   return (
     <AppBar position="fixed">
       <Toolbar className={classes.toolbar}>
@@ -22,6 +23,13 @@ function NavBar() {
           <Menu />
         </IconButton>
         )}
+        <IconButton
+          color="inherit"
+          sx={{ ml: 1 }}
+          onClick={() => {}}
+        >
+          {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
