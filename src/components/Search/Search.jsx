@@ -22,6 +22,14 @@ function Search() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         variant="standard"
+        InputProps={{
+          className: classes.input,
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
       />
     </div>
   );
