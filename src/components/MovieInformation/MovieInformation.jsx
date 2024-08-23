@@ -35,8 +35,21 @@ function MovieInformation() {
         <img
           className={classes.poster}
           src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-
+          alt={data?.title}
         />
+      </Grid>
+      <Grid item container direction="column" lg={7}>
+        <Typography variant="h3" align="center" gutterBottom>
+          {data?.title} ({data.release_date.split('-')[0]})
+        </Typography>
+        <Typography variant="h3" align="center" gutterBottom>
+          {data?.tagline}
+        </Typography>
+        <Grid item className={classes.containerSpaceAround}>
+          <Box display="flex" align="center">
+            <Rating readOnly value={data.vote_average / 2} />
+          </Box>
+        </Grid>
       </Grid>
     </Grid>
   );
