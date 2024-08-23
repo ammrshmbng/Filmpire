@@ -5,9 +5,19 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
+import { useGetMovieQuery } from '../../services/TMDB';
+
 function MovieInformation() {
   const { id } = useParams();
+  const { data, error, isFetching } = useGetMovieQuery(id);
 
+  if (isFetching) {
+    return (
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <CircularProgress size="8rem" />
+      </Box>
+    );
+  }
   return (
     <div>MovieInformation {id}</div>
   );
