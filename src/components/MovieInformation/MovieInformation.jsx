@@ -5,11 +5,13 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
+import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
 
 function MovieInformation() {
   const { id } = useParams();
   const { data, error, isFetching } = useGetMovieQuery(id);
+  const classes = useStyles();
 
   if (isFetching) {
     return (
@@ -28,7 +30,9 @@ function MovieInformation() {
   }
 
   return (
-    <div>MovieInformation {id}</div>
+    <Grid container className={classes.containerSpaceAround}>
+      test
+    </Grid>
   );
 }
 
