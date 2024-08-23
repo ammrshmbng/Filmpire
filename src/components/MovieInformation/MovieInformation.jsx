@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
+import genreIcons from '../../assets/genres';
 
 function MovieInformation() {
   const { id } = useParams();
@@ -48,7 +49,21 @@ function MovieInformation() {
         <Grid item className={classes.containerSpaceAround}>
           <Box display="flex" align="center">
             <Rating readOnly value={data.vote_average / 2} />
+            <Typography variant="subtitle1" gutterBottom style={{ marginLeft: '10px' }}>
+              {data?.vote_average} / 10
+            </Typography>
           </Box>
+          <Typography variant="h6" align="center" gutterBottom>
+            {data?.runtime} min  {data?.spoken_languages.length > 0 ? `/ ${data?.spoken_languages[0].name}` : ''}
+          </Typography>
+        </Grid>
+        <Grid item className={classes.genresContainer}>
+          {data?.genres?.map((genre, i) => (
+            <Link className={classes.links} key={genre.name} to="/" onClick={() => {}}>
+              <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
+
+            </Link>
+          ))}
         </Grid>
       </Grid>
     </Grid>
