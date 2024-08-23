@@ -32,4 +32,24 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-around',
     flexWrap: 'wrap',
   },
+  genreImage: {
+    filter: theme.palette.mode === 'dark' && 'invert(1)',
+    marginRight: '10px',
+  },
+  links: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0.5rem 1rem',
+    },
+  },
+  castImage: {
+    width: '100%',
+    maxWidth: '7em',
+    height: '8em',
+    objectFit: 'cover',
+    borderRadius: '10px',
+  },
 }));

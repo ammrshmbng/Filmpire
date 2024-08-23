@@ -8,11 +8,13 @@ import axios from 'axios';
 import useStyles from './styles';
 import { useGetMovieQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 function MovieInformation() {
   const { id } = useParams();
   const { data, error, isFetching } = useGetMovieQuery(id);
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   if (isFetching) {
     return (
@@ -59,12 +61,32 @@ function MovieInformation() {
         </Grid>
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
-            <Link className={classes.links} key={genre.name} to="/" onClick={() => {}}>
+            <Link className={classes.links} key={genre.name} to="/" onClick={() => dispatch(selectGenreOrCategory(genre.id))}>
               <img src={genreIcons[genre.name.toLowerCase()]} className={classes.genreImage} height={30} />
               <Typography color="textPrimary" variant="subtitle1">{genre?.name}</Typography>
 
             </Link>
           ))}
+        </Grid>
+        <Typography variant="h5" gutterBottom style={{ marginTop: '20px' }}>Overview</Typography>
+        <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
+        <Typography variant="h5" gutterBottom>Top Cast</Typography>
+        <Grid item container spacing={2}>
+          {data && data?.credits?.cast?.map((character, i) => (
+            character.profile_path && (
+            <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character.id}`} style={{ textDecoration: 'none' }}>
+              <img
+                className={classes.castImage}
+                src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+                alt={character.name}
+              />
+              <Typography color="textPrimary" align="center">{character?.name}</Typography>
+              <Typography color="textSecondary" align="center">
+                {character.character.split('/')[0]}
+              </Typography>
+            </Grid>
+            )
+          )).slice(0, 6)}
         </Grid>
       </Grid>
     </Grid>
