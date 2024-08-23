@@ -26,4 +26,10 @@ export default makeStyles((theme) => ({
       marginBottom: '30px',
     },
   },
+  genresContainer: {
+    margin: '10px 0 !imaportant',
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+  },
 }));
