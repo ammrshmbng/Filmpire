@@ -31,7 +31,13 @@ function MovieInformation() {
 
   return (
     <Grid container className={classes.containerSpaceAround}>
-      test
+      <Grid item sm={12} lg={4}>
+        <img
+          className={classes.poster}
+          src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+
+        />
+      </Grid>
     </Grid>
   );
 }
