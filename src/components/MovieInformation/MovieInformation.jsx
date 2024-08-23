@@ -18,6 +18,15 @@ function MovieInformation() {
       </Box>
     );
   }
+
+  if (error) {
+    return (
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <Link to="/">Something went wrong - Go back.</Link>
+      </Box>
+    );
+  }
+
   return (
     <div>MovieInformation {id}</div>
   );
