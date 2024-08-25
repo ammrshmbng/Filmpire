@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useGetMoviesQuery } from '../../services/TMDB';
-import { MovieList } from '..';
+import { MovieList, Pagination } from '..';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 function Movies() {
@@ -34,7 +34,11 @@ function Movies() {
   if (error) return 'An error has occured.';
 
   return (
-    <MovieList movies={data} />
+    <>
+      <MovieList movies={data} />
+      <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
+    </>
+
   );
 }
 
