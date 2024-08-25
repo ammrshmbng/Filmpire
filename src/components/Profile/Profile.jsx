@@ -22,6 +22,11 @@ function Profile() {
     page: 1,
   });
 
+  useEffect(() => {
+    refetchFavorites();
+    refetchWatchlisted();
+  }, []);
+
   const logout = () => {
     localStorage.clear();
 
