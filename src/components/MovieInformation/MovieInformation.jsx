@@ -71,9 +71,7 @@ function MovieInformation() {
               {data?.vote_average} / 10
             </Typography>
           </Box>
-          <Typography variant="h6" align="center" gutterBottom>
-            {data?.runtime} min  {data?.spoken_languages.length > 0 ? `/ ${data?.spoken_languages[0].name}` : ''}
-          </Typography>
+          <Typography gutterBottom variant="h6" align="center">{data?.runtime}min</Typography>
         </Grid>
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
