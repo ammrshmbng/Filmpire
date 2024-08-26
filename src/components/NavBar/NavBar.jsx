@@ -15,14 +15,13 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
-
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, userSelector } from '../../features/auth';
-
 import { Sidebar, Search } from '../index';
 import { fetchToken, createSessionId, moviesApi } from '../../utils';
 import useStyles from './styles';
+import { ColorModeContext } from '../../utils/ToggleColorMode';
 
 function NavBar() {
   const { isAuthenticated, user } = useSelector(userSelector);
@@ -32,6 +31,7 @@ function NavBar() {
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
   const dispatch = useDispatch();
+  const colorMode = useContext(ColorModeContext);
 
   const token = localStorage.getItem('request_token');
   const sessionIdFromLocalStorage = localStorage.getItem('session_id');
@@ -67,7 +67,7 @@ function NavBar() {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+          <IconButton color="inherit" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           {!isMobile && <Search />}
