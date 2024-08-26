@@ -1,7 +1,7 @@
 
 # FILMPIRE - Ammar Sihombing
 
-[View Demo]([https://mare-filmpire.netlify.app](https://mare-filmpire.netlify.app/))
+[View Demo](https://mare-filmpire.netlify.app/)
 
 ## About the Project
 
