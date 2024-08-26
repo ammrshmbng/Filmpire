@@ -88,7 +88,7 @@ function NavBar() {
                 <Avatar
                   style={{ width: 30, height: 30 }}
                   alt="Profile"
-                  src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                  src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar?.avatar_path}`}
                 />
               </Button>
             )}
